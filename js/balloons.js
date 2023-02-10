@@ -16,6 +16,7 @@ $(function(){
     //randomize the attention seeker
     $("h1.animate__animated").addClass(attentionSeekers[rand]);
 
+    //this is currently broken
     //$('#birthday').pickadate({ format: 'mmmm, d' });
 
     // uncheck all checkboxes (FireFox)
@@ -23,8 +24,9 @@ $(function(){
         $(this).prop('checked', false);
     });
 
+    //event listener for on checkbox changed
     $('.form-check-input').on('change', function () {
-        // make the image visible
+        // make the balloon image visible
         $('#' + this.id + 'Img').css('visibility', 'visible');
         // animate balloon in/out based on checkbox
         $(this).is(':checked') ?
@@ -32,17 +34,24 @@ $(function(){
         $('#' + this.id + 'Img').addClass('animate__animated animate__bounceOutUp');
     }); 
 
+    //event listener for checkbox label hover
     $(".form-check-label").hover(function() {
-        //remove the color class, add color style
+        //this first function gets triggered when the user hovers over a checkbox label
+        //remove the h1-color class because it makes the h1 grey
+        //then we are adding the in-line style, color, and giving it the value of the "for" attribue
         $("h1.animate__animated").removeClass('h1-color').css('color', $(this).attr("for"));
     }, function() {
-        //set the color style to empty, then add the color class   
+        //this second function gets triggered when the user stops hovering over a checkbox label
+        //set the in-line style of color to empty, then re-add the h1-color class   
         $("h1.animate__animated").css('color', '').addClass('h1-color');
     })
 
     //toggle all balloons clicked
     $("#all").click(function() {
+        //loop through each checkbox input
         $(".form-check-input").each(function() {
+            //if the all checkbox is checked, toggle the others to be checked as well
+            //else toggle the others to be unchecked
             if ($("#all").prop("checked")) {
                 $(this).prop("checked", true).trigger("change");
             } else {
