@@ -14,8 +14,11 @@
         <style>
             h1 {
                 font-family: 'Londrina Shadow';
-                color: slategray;
                 font-size: 3.5em;
+            }
+
+            .h1-color {
+                color: slategray;
             }
     
             body {
@@ -57,7 +60,7 @@
          <!-- content -->
          <div class="container">
             <!-- animated text -->
-            <h1 class="animate__animated">Happy Birthday!</h1><hr />
+            <h1 class="animate__animated h1-color">Happy Birthday!</h1><hr />
             <form role="form">
                 <div class="row">
                     <div class="col-sm">
@@ -79,6 +82,10 @@
                                 </div>
                                 <!--add check boxes -->
                                 <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="all">
+                                    <label class="form-check-label" for="all">All balloons</label>
+                                </div>
+                                <div class="form-group form-check">
                                     <input type="checkbox" class="form-check-input" id="red">
                                     <label class="form-check-label" for="red">Red balloons</label>
                                 </div>
@@ -95,7 +102,6 @@
                                 <button type="button" class="btn btn-outline-primary mt-3" id="submit">Submit</button>
                            
                     <div class="col-sm">
-                        col 2
                         <img src="media/red.png" class="ball" alt="red balloon" id="redImg" />
                         <img src="media/green.png" class="ball" alt="green balloon" id="greenImg" />
                         <img src="media/blue.png" class="ball" alt="blue balloon" id="blueImg" />

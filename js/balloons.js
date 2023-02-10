@@ -16,13 +16,12 @@ $(function(){
     //randomize the attention seeker
     $("h1.animate__animated").addClass(attentionSeekers[rand]);
 
-    $('#birthday').pickadate({ format: 'mmmm, d' });
+    //$('#birthday').pickadate({ format: 'mmmm, d' });
 
     // uncheck all checkboxes (FireFox)
     $('.form-check-input').each(function () {
         $(this).prop('checked', false);
     });
-
 
     $('.form-check-input').on('change', function () {
         // make the image visible
@@ -32,6 +31,25 @@ $(function(){
         $('#' + this.id + 'Img').removeClass().addClass('animate__animated animate__bounceInDown') :
         $('#' + this.id + 'Img').addClass('animate__animated animate__bounceOutUp');
     }); 
+
+    $(".form-check-label").hover(function() {
+        //remove the color class, add color style
+        $("h1.animate__animated").removeClass('h1-color').css('color', $(this).attr("for"));
+    }, function() {
+        //set the color style to empty, then add the color class   
+        $("h1.animate__animated").css('color', '').addClass('h1-color');
+    })
+
+    //toggle all balloons clicked
+    $("#all").click(function() {
+        $(".form-check-input").each(function() {
+            if ($("#all").prop("checked")) {
+                $(this).prop("checked", true).trigger("change");
+            } else {
+                $(this).prop("checked", false).trigger("change");
+            }
+        });
+    });
 
     //submit button toast
     $("#submit").click(function() {
@@ -47,5 +65,5 @@ $(function(){
         if(checked.length < 1) {
             $("#toast").toast({ autohide: false}).toast("show");
         }
-    })
+    });
 });
